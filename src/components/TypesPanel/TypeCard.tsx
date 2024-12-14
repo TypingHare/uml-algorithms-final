@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux'
 import { operateGlobal } from '../../redux'
 
 export function TypeCard(props: TypeCardProps) {
-    const { index, type } = props
+    const { index, type, numQuestions } = props
     const dispatch = useDispatch()
 
     function handleClick() {
-        window.history.pushState(null, '', `?type=${index}`)
         dispatch(operateGlobal.setTabIndex(1))
+        dispatch(operateGlobal.setQuestionTypeIndex(index))
     }
 
     return (
@@ -29,9 +29,9 @@ export function TypeCard(props: TypeCardProps) {
             }}>
                 {type}
             </Box>
-            {/*<Box sx={{ marginLeft: 'auto' }}>*/}
-            {/*    0 questions*/}
-            {/*</Box>*/}
+            <Box sx={{ marginLeft: 'auto' }}>
+                {numQuestions} questions
+            </Box>
         </Card>
     )
 }
@@ -39,4 +39,5 @@ export function TypeCard(props: TypeCardProps) {
 export interface TypeCardProps {
     index: number
     type: string
+    numQuestions: number
 }

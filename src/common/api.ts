@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Question } from '../common/entities/question.ts'
+import { Question } from './entities/question.ts'
 
 export const API_DOMAIN = 'http://localhost:3210/algorithms-final'
 
@@ -31,4 +31,8 @@ export async function getQuestions(): Promise<Question[]> {
     }
 
     return questions
+}
+
+export async function submitQuestion(question: Partial<Question>): Promise<void> {
+    await axios.post(API_DOMAIN + '/questions', question)
 }
