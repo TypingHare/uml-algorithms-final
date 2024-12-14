@@ -7,7 +7,6 @@ import { HourMinuteSecond } from '@typinghare/hour-minute-second'
 @Injectable()
 export class AppService {
     private readonly logger = new Logger(AppService.name)
-
     private readonly topics: string[] = []
     private readonly questions: Question[] = []
 
@@ -77,7 +76,10 @@ export class AppService {
     }
 
     private persistQuestions(): void {
-        const content: string = JSON.stringify(this.questions)
+        const savedQuestions: Question[] = this.questions.sort(
+            (q1, q2) => q1.id - q2.id
+        )
+        const content: string = JSON.stringify(savedQuestions)
         fs.writeFileSync(QUESTION_FILE_PATH, content)
     }
 }
