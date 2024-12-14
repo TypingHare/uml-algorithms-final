@@ -3,7 +3,7 @@ Description=Algorithms Final Backend
 After=network.target
 
 [Service]
-ExecStart=/home/admin/algorithms-final-backend/server/bin
+ExecStart=/home/admin/algorithms-final-backend/server/bin/start.sh
 WorkingDirectory=/home/admin/algorithms-final-backend/
 Restart=always
 User=admin
