@@ -6,7 +6,10 @@ async function bootstrap() {
     const app = await NestFactory.create(AppModule)
 
     // Enable CORS
-    app.enableCors()
+    app.enableCors();
+
+    // API prefix
+    app.setGlobalPrefix('algorithms-final')
 
     const port = process.env.PORT ?? 3210
     await app.listen(port)
