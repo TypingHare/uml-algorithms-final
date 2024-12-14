@@ -6,6 +6,7 @@ import { getQuestions, getTopics } from '../../common/api.ts'
 import { TypesPanel } from '../TypesPanel'
 import { QuestionsPanel } from '../QuestionsPanel'
 import { CreateQuestionsPanel } from '../CreateQuestionsPanel'
+import { AboutPanel } from '../AboutPanel/AboutPanel.tsx'
 
 export function App() {
     const dispatch = useDispatch()
@@ -41,6 +42,7 @@ export function App() {
                     <Tab label="Types" id="panel-types" />
                     <Tab label="Questions" id="panel-questions" />
                     <Tab label="Contribute" id="panel-create-questions" />
+                    <Tab label="About" id="about" />
                 </Tabs>
             </Box>
 
@@ -52,6 +54,9 @@ export function App() {
             </Box>
             <Box id="panel-create-question" hidden={tabIndex !== 2}>
                 <CreateQuestionsPanel />
+            </Box>
+            <Box id="about" hidden={tabIndex !== 3}>
+                <AboutPanel />
             </Box>
         </Container>
     )
