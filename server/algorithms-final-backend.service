@@ -1,0 +1,12 @@
+[Unit]
+Description=Algorithms Final Backend
+After=network.target
+
+[Service]
+ExecStart=/home/admin/algorithms-final-backend/server/bin
+WorkingDirectory=/home/admin/algorithms-final-backend/
+Restart=always
+User=admin
+
+[Install]
+WantedBy=multi-user.target
