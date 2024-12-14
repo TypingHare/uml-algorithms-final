@@ -39,9 +39,17 @@ export function CreateQuestionsPanel() {
             contributors: !contributor ? undefined : [contributor],
         }).then(() => {
             alert('Thank you so much for your contribution! Good luck in the final exam!')
+            handleClear()
         }).catch(() => {
             alert('Failed to contribute this question! Please contact zhuojian_chen@student.uml.edu.')
         })
+    }
+
+    function handleClear() {
+        setQuestion('')
+        setSelectedAnswer('Unknown')
+        setSelectedTopicIndex(-1)
+        setContributor('')
     }
 
     return (
@@ -123,7 +131,24 @@ export function CreateQuestionsPanel() {
                 onChange={(event) => setContributor(event.target.value)}
             />
 
-            <Button variant="contained" onClick={handleSubmit}>Submit</Button>
+            <Grid2 container spacing={2}>
+                <Grid2>
+                    <Button
+                        variant="contained"
+                        onClick={handleSubmit}
+                    >
+                        Submit
+                    </Button>
+                </Grid2>
+                <Grid2>
+                    <Button
+                        variant="contained"
+                        onClick={handleClear}
+                    >
+                        Clear
+                    </Button>
+                </Grid2>
+            </Grid2>
         </Box>
     )
 }
