@@ -1,0 +1,13 @@
+### macOS ###
+.DS_Store
+
+### VSCode ###
+.vscode
+
+### JetBrains ###
+.idea
+
+### NodeJS ###
+node_modules
+
+### Project ###
