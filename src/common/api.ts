@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Question } from './entities/question.ts'
 
-export const API_DOMAIN = 'http://localhost:3210/algorithms-final'
+export const API_DOMAIN = 'https://www.james-chan.me/algorithms-final'
 
 export interface Response<T> {
     status: number
