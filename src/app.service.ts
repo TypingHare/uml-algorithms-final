@@ -31,7 +31,7 @@ export class AppService {
      * Returns all questions.
      */
     public getQuestions(): Question[] {
-        return this.questions
+        return this.questions.filter((question) => !!question)
     }
 
     /**
@@ -57,6 +57,32 @@ export class AppService {
         }, HourMinuteSecond.ofSeconds(1).ms)
 
         return newQuestion
+    }
+
+    public updateQuestion(newQuestion: Partial<Question>): Question | null {
+        const { id } = newQuestion
+        if (id === undefined || id < 0 || id > this.questions.length) {
+            return null
+        }
+
+        const question = this.questions[id]
+        if (!question) return null
+
+        Object.assign(question, newQuestion)
+        question.updatedAt = new Date()
+
+        return question
+    }
+
+    public deleteQuestion(id: number): Question {
+        if (id < 0 || id > this.questions.length) {
+            return
+        }
+
+        const question = this.questions[id]
+        this.questions[id] = null
+
+        return question
     }
 
     private loadTopics(): void {
