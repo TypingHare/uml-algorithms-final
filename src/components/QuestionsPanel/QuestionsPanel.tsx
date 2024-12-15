@@ -12,7 +12,11 @@ export function QuestionsPanel() {
     }
 
     return (
-        <Grid2 container spacing={2} sx={{ padding: '2rem 1rem' }}>
+        <Grid2 container spacing={2}
+               sx={{
+                   padding: '2rem 1rem',
+                   height: 'auto',
+               }}>
             {questions.filter(shouldBeDisplayed).map((question) => (
                 <Grid2
                     key={question.id}

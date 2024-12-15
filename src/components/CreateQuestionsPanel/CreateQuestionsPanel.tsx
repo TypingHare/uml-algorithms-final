@@ -1,4 +1,5 @@
 import {
+    Alert,
     Box,
     Button,
     Card,
@@ -53,6 +54,9 @@ export function CreateQuestionsPanel() {
 
     return (
         <Box sx={{ padding: '2rem 1rem' }}>
+            <Alert severity="warning" sx={{ mb: 2 }}>
+                Please refrain from submitting questions that already exist!
+            </Alert>
             <Typography sx={{
                 fontWeight: 'bold',
                 fontSize: '1.15rem',

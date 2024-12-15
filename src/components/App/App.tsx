@@ -44,7 +44,8 @@ export function App() {
 
     return (
         <Container sx={{
-            height: '100vh',
+            height: 'auto',
+            minHeight: '100vh',
             backgroundColor: '#edf2fb',
             padding: '1rem 0',
         }}>
