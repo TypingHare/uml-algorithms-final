@@ -6,7 +6,7 @@ import {
     HttpException,
     HttpStatus,
     Post,
-    Put,
+    Put, Query,
 } from '@nestjs/common'
 import { AppService } from './app.service.js'
 import { Response } from './response.js'
@@ -22,7 +22,7 @@ export class AppController {
     ) {}
 
     @Get('invitation-code')
-    public check(@Body() invitation: Invitation): Response<boolean> {
+    public check(@Query() invitation: Invitation): Response<boolean> {
         const isCorrect = invitation.code === process.env.INVITATION_CODE
 
         return isCorrect
