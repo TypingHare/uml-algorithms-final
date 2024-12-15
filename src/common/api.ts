@@ -12,6 +12,12 @@ export interface Response<T> {
 let topics: string[] | null = null
 let questions: Question[] | null = null
 
+export async function checkCode(code: string): Promise<boolean> {
+    const response: Response<boolean>
+        = (await axios.get(API_DOMAIN + `/invitation-code?code=${code}`)).data
+    return response.data
+}
+
 export async function getTopics(): Promise<string[]> {
     if (!topics) {
         const response: Response<string[]>

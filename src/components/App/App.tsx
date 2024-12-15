@@ -7,10 +7,12 @@ import { TypesPanel } from '../TypesPanel'
 import { QuestionsPanel } from '../QuestionsPanel'
 import { CreateQuestionsPanel } from '../CreateQuestionsPanel'
 import { AboutPanel } from '../AboutPanel'
+import { InvitationCodeCheckPage } from '../InvitationCodeCheckPage'
 
 export function App() {
     const dispatch = useDispatch()
     const tabIndex = useAppSelector(selectGlobal.tabIndex)
+    const isInvited = useAppSelector(selectGlobal.isInvited)
 
     function handleTabClick(
         _event: SyntheticEvent<Element, Event>,
@@ -28,9 +30,21 @@ export function App() {
         })
     }, [])
 
+    if (!isInvited) {
+        return (
+            <Container sx={{
+                height: '100vh',
+                backgroundColor: '#edf2fb',
+                padding: '1rem 0',
+            }}>
+                <InvitationCodeCheckPage />
+            </Container>
+        )
+    }
+
     return (
         <Container sx={{
-            minHeight: '100vh',
+            height: '100vh',
             backgroundColor: '#edf2fb',
             padding: '1rem 0',
         }}>
