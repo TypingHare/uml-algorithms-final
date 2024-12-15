@@ -3,9 +3,10 @@ import { AppController } from './app.controller.js'
 import { AppService } from './app.service.js'
 import { APP_INTERCEPTOR } from '@nestjs/core'
 import { LoggingInterceptor } from './logging.interceptor.js'
+import { ConfigModule } from '@nestjs/config'
 
 @Module({
-    imports: [],
+    imports: [ConfigModule.forRoot({ isGlobal: true })],
     controllers: [AppController],
     providers: [
         AppService,

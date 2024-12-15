@@ -11,10 +11,32 @@ import {
 import { AppService } from './app.service.js'
 import { Response } from './response.js'
 import { Question } from './entity/question.js'
+import { ConfigService } from '@nestjs/config'
+import { Invitation } from './entity/invitation.js'
 
 @Controller()
 export class AppController {
-    constructor(private readonly appService: AppService) {}
+    constructor(
+        private readonly appService: AppService,
+        private readonly configService: ConfigService
+    ) {}
+
+    @Get('invitation-code')
+    public check(@Body() invitation: Invitation): Response<boolean> {
+        const isCorrect = invitation.code === process.env.INVITATION_CODE
+
+        return isCorrect
+            ? {
+                  status: HttpStatus.OK,
+                  message: 'Invitation Code is correct',
+                  data: true,
+              }
+            : {
+                  status: HttpStatus.FORBIDDEN,
+                  message: 'Invitation Code is incorrect',
+                  data: false,
+              }
+    }
 
     @Get('topics')
     public getTopics(): Response<string[]> {
