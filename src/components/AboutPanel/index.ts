@@ -1,1 +1,1 @@
-export * from './AboutPanel.tsxs'
+export * from './AboutPanel.tsx'

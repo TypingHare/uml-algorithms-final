@@ -6,7 +6,7 @@ import { getQuestions, getTopics } from '../../common/api.ts'
 import { TypesPanel } from '../TypesPanel'
 import { QuestionsPanel } from '../QuestionsPanel'
 import { CreateQuestionsPanel } from '../CreateQuestionsPanel'
-import { AboutPanel } from '../AboutPanel/AboutPanel.tsx'
+import { AboutPanel } from '../AboutPanel'
 
 export function App() {
     const dispatch = useDispatch()
