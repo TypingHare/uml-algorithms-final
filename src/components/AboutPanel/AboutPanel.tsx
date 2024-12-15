@@ -1,19 +1,19 @@
-import { Box, Typography } from '@mui/material'
+import { Alert, Box } from '@mui/material'
 
 export function AboutPanel() {
     return (
         <Box sx={{ padding: '2rem 1rem' }}>
-            <Typography variant="body1">
-                This website is crafted by&nbsp;
+            <Alert severity="info">
+                This website was created by&nbsp;
                 <a href="mailto:zhuojian_chen@student.uml.edu">James Chen</a>.
-                It serves as a platform sharing practice exercises for the&nbsp;
-                <b>Analysis of Algorithms</b> final exam.
-            </Typography>
-            <br />
-            <Typography variant="body1">
-                In the final class, Professor Wang said we are allowed to share
-                questions and discuss with each others.
-            </Typography>
+                It serves as a platform for sharing practice exercises for
+                the&nbsp;<b>Analysis of Algorithms</b> final exam.
+            </Alert>
+            <br/>
+            <Alert severity="warning">
+                In the final class, Professor Wang mentioned that we are
+                encouraged to share questions and discuss them with one another.
+            </Alert>
         </Box>
     )
 }

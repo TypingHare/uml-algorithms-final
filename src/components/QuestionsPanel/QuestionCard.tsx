@@ -19,8 +19,9 @@ export function QuestionCard(props: QuestionCardProps) {
             height: '7rem',
             userSelect: 'none',
             webkitUserSelect: 'none',
+            cursor: 'pointer',
+            color: showAnswer ? '#7251b5' : 'inherit',
             '&:hover': {
-                cursor: 'pointer',
                 backgroundColor: '#e2eafc',
             },
         }} onClick={handleClick}>

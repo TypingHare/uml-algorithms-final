@@ -49,7 +49,6 @@ export function CreateQuestionsPanel() {
         setQuestion('')
         setSelectedAnswer('Unknown')
         setSelectedTopicIndex(-1)
-        setContributor('')
     }
 
     return (
@@ -97,13 +96,15 @@ export function CreateQuestionsPanel() {
             </Typography>
             <Grid2 container spacing={2} sx={{ marginBottom: '1.5rem' }}>
                 {topics.map(((topic, index) => (
-                    <Grid2 size={{ md: 4, sm: 6, xs: 12 }} key={index}>
+                    <Grid2 size={{ md: 4, sm: 6, xs: 12 }} key={index}
+                           sx={{ display: 'flex', alignItems: 'stretch' }}>
                         <Card sx={{
                             padding: '1rem',
                             display: 'flex',
                             alignItems: 'center',
                             backgroundColor: selectedTopicIndex == index ? '#e2eafc' : 'none',
                             cursor: 'pointer',
+                            width: '100%',
                         }} onClick={topicClickProvider(index)}>
                             <Box sx={{
                                 fontSize: '1.15rem',
