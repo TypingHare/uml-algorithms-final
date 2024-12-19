@@ -26,7 +26,8 @@ export function QuestionCard(props: QuestionCardProps) {
             '&:hover': {
                 backgroundColor: '#e2eafc',
             },
-        }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+        }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}
+              onTouchStart={handleMouseDown} onTouchEnd={handleMouseUp}>
             <CardContent>
                 {showAnswer ? question.answer : question.question}
             </CardContent>
