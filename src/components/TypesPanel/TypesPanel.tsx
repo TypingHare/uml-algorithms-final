@@ -7,6 +7,7 @@ export function TypesPanel() {
     const topics: string[] = useAppSelector(selectGlobal.topics)
     const questions: Question[] = useAppSelector(selectGlobal.questions)
     const numQuestionsArray: number[] = new Array(topics.length).fill(0)
+
     questions.forEach((question) => {
         const { questionTypeIndex } = question
         if (questionTypeIndex >= 0 && questionTypeIndex < topics.length) {

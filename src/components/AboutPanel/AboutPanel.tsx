@@ -17,6 +17,24 @@ export function AboutPanel() {
                 encouraged to share questions and discuss them with one another
                 before the exam.
             </Alert>
+            <br />
+            <Alert severity="info">
+                <span style={{
+                    fontSize: '1.15em',
+                    fontWeight: 'bold',
+                }}>Changelog</span>
+                <li>
+                    Implemented history state feature.
+                </li>
+                <li>
+                    Adjusted question card heights, making it always display the
+                    complete question.
+                </li>
+                <li>
+                    Feature Update: Holding the question card to display the
+                    answer.
+                </li>
+            </Alert>
         </Box>
     )
 }

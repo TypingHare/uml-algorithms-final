@@ -37,7 +37,12 @@ const globalSlice = createSlice({
             state: GlobalState,
             tabIndex: PayloadAction<GlobalState['tabIndex']>,
         ) => {
-            state.tabIndex = tabIndex.payload
+            const index = tabIndex.payload
+            if (index == state.tabIndex) {
+                return
+            }
+
+            state.tabIndex = index
         },
         setTopics: (
             state: GlobalState,
@@ -56,8 +61,11 @@ const globalSlice = createSlice({
             questionTypeIndex: PayloadAction<GlobalState['questionTypeIndex']>,
         ) => {
             const index = questionTypeIndex.payload
+            if (index == state.questionTypeIndex) {
+                return
+            }
+
             state.questionTypeIndex = index
-            window.history.pushState(null, '', `?type=${index}`)
         },
     },
 })

@@ -6,17 +6,19 @@ export function QuestionCard(props: QuestionCardProps) {
     const { question } = props
     const [showAnswer, setShowAnswer] = useState(false)
 
-    function handleClick() {
-        setShowAnswer(it => !it)
+    function handleMouseDown() {
+        setShowAnswer(true)
+    }
+
+    function handleMouseUp() {
+        setShowAnswer(false)
     }
 
     return (
         <Card sx={{
             padding: '1rem',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            height: '7rem',
+            minHeight: '6rem',
+            width: '100%',
             userSelect: 'none',
             webkitUserSelect: 'none',
             cursor: 'pointer',
@@ -24,7 +26,7 @@ export function QuestionCard(props: QuestionCardProps) {
             '&:hover': {
                 backgroundColor: '#e2eafc',
             },
-        }} onClick={handleClick}>
+        }} onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
             <CardContent>
                 {showAnswer ? question.answer : question.question}
             </CardContent>

@@ -8,17 +8,41 @@ import { QuestionsPanel } from '../QuestionsPanel'
 import { CreateQuestionsPanel } from '../CreateQuestionsPanel'
 import { AboutPanel } from '../AboutPanel'
 import { InvitationCodeCheckPage } from '../InvitationCodeCheckPage'
+import {
+    getUrlSearchParams,
+    QueryStringKey,
+    setUrlSearchParams,
+    updateUrlSearchParams,
+} from '../../common/window.ts'
 
 export function App() {
     const dispatch = useDispatch()
     const tabIndex = useAppSelector(selectGlobal.tabIndex)
     const isInvited = useAppSelector(selectGlobal.isInvited)
 
-    function handleTabClick(
-        _event: SyntheticEvent<Element, Event>,
-        tabIndex: number,
-    ) {
-        dispatch(operateGlobal.setTabIndex(tabIndex))
+    function checkCurrentUrl() {
+        const params = getUrlSearchParams()
+        params.forEach((value, key) => {
+            if (key == QueryStringKey.TAB) {
+                const tabIndex = Number(value) || 0
+                params.set(QueryStringKey.TAB, tabIndex.toString())
+                dispatch(operateGlobal.setTabIndex(tabIndex))
+            }
+            if (key === QueryStringKey.QUESTION_TYPE_INDEX) {
+                const index = Number(value) || -1
+                params.set(QueryStringKey.QUESTION_TYPE_INDEX, index.toString())
+                dispatch(operateGlobal.setQuestionTypeIndex(index))
+            }
+        })
+
+        if (!params.has(QueryStringKey.TAB)) {
+            params.set(QueryStringKey.TAB, '0')
+        }
+        if (!params.has(QueryStringKey.QUESTION_TYPE_INDEX)) {
+            params.set(QueryStringKey.QUESTION_TYPE_INDEX, '-1')
+        }
+
+        setUrlSearchParams(params)
     }
 
     useEffect(() => {
@@ -28,7 +52,23 @@ export function App() {
         getQuestions().then(questions => {
             dispatch(operateGlobal.setQuestions(questions))
         })
+
+        checkCurrentUrl()
+
+        window.addEventListener('popstate', () => {
+            checkCurrentUrl()
+        })
     }, [])
+
+    function handleTabClick(
+        _event: SyntheticEvent<Element, Event>,
+        tabIndex: number,
+    ) {
+        updateUrlSearchParams(params => {
+            params.set(QueryStringKey.TAB, tabIndex.toString())
+        })
+        dispatch(operateGlobal.setTabIndex(tabIndex))
+    }
 
     if (!isInvited) {
         return (
